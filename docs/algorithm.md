@@ -19,7 +19,7 @@ data layout is likely to improve cache utilization in block-based
 caches common on today's computer architectures.  For instance, the
 edges may connect adjacent pixels in an image, as many image
 processing operations involve accessing local neighborhoods.  The
-resulting node layouts are "cache-oblivious," in the sense that no
+resulting node layouts are "cache-oblivious" in the sense that no
 particular knowledge of the cache parameters (number and size of
 blocks, associativity, replacement policy, etc.) are accounted for.
 Rather, the expectation is that the layouts will provide good
@@ -107,11 +107,3 @@ A reasonable parameter choice for good-quality layouts is:
 * iterations = 4
 * window = 4
 * period = 2
-
-As the window gets progressively larger, the running time of each cycle will
-rapidly increase.  For this reason, the code can be terminated early via
-CTRL-C, at which point the best
-layout found so far is output.  The objective function f and the
-lowest f found so far are output at the end of each cycle to provide
-feedback on progress.  The f value of the input layout is also output
-before the first cycle.

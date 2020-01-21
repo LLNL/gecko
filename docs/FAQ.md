@@ -1,6 +1,10 @@
 Frequently Asked Questions
 ==========================
 
+For questions not answered here, please contact us at
+[gecko@llnl.gov](mailto:gecko@llnl.gov).
+
+
 ## Why does arc insertion sometimes fail?
 
 First, when inserting arc (*i*, *j*), the graph must have at least *i* nodes.
@@ -31,7 +35,7 @@ seeds and then keeping the best layout found, as determined by calling the
 
 Gecko randomly shuffles the initial layout and takes as input a random seed,
 which ensures reproducibility.  This randomization initializes the optimization
-algorithm and steers it in a particular 'direction' of the search space to
+algorithm and steers it in a particular "direction" of the search space to
 be explored.  When execution time is at a premium, such as in runtime
 ordering, a single run may suffice.  When ordering is done offline, we
 recommend exploring a dozen or more random seeds.

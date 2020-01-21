@@ -5,7 +5,7 @@ The command-line utility `bin/gecko` orders graphs stored in the text format
 read by
 [Chaco](https://cfwebprod.sandia.gov/cfdocs/CompResearch/docs/guide.pdf) and
 [Metis](http://glaros.dtc.umn.edu/gkhome/views/metis/).
-Such files begin with a line listing the number of vertices, *V*, and edges,
+Such files begin with a line listing the number of nodes, *V*, and edges,
 *E*, which is followed by *V* lines that for each node, 1 <= *i* <= *V*,
 lists the indices of all nodes adjacent to node *i*.  Example graphs are
 available in the `data` directory.  The input graph is read from standard

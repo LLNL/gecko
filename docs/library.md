@@ -10,10 +10,18 @@ gecko imposes**.
 Graph Construction
 ------------------
 
-A graph is first created by inserting nodes and edges via
+A graph is first constructed via
 
-    Graph::insert_node();
-    Graph::insert_arc(Node::Index i, Node::Index j, Float weight = 1);
+    Graph::Graph(uint nodes = 0);
+
+If the number of nodes is known, then it may be specified as the optional
+parameter.  Nodes may otherwise be inserted one at a time using
+
+    Node::Index Graph::insert_node();
+
+Graph edges are inserted via
+
+    Arc::Index Graph::insert_arc(Node::Index i, Node::Index j, Float weight = 1);
 
 An undirected edge {*i*, *j*} is represented as two directed edges,
 called *arcs*, (*i*, *j*) and (*j*, *i*).  Although the API only supports
