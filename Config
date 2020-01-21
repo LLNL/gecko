@@ -1,0 +1,61 @@
+# compiler executables --------------------------------------------------------
+
+CC = gcc
+CXX = g++
+
+# language standard -----------------------------------------------------------
+
+  CXXSTD = -std=c++98
+# CXXSTD = -std=c++11
+
+# common compiler options -----------------------------------------------------
+
+FLAGS = -pedantic -Wall -Wextra -O3 -fPIC -I../include
+SOFLAGS =
+
+# macOS compiler options (uncomment on macOS) ---------------------------------
+
+# SOFLAGS += -undefined dynamic_lookup
+
+# required compiler macros ----------------------------------------------------
+
+# optional compiler macros ----------------------------------------------------
+
+# GECKO_PART_FRAC = 4
+# GECKO_CR_SWEEPS = 1
+# GECKO_GS_SWEEPS = 1
+# GECKO_WINDOW_MAX = 16
+# GECKO_WITH_ADJLIST = 0
+# GECKO_WITH_NONRECURSIVE = 0
+# GECKO_WITH_DOUBLE_PRECISION = 0
+
+# build targets ---------------------------------------------------------------
+
+# default targets
+BUILD_UTILITIES = 1
+BUILD_TESTING = 1
+BUILD_SHARED_LIBS = 0
+
+# build all targets?
+ifdef BUILD_ALL
+  ifneq ($(BUILD_ALL),0)
+    BUILD_UTILITIES = 1
+    BUILD_TESTING = 1
+  endif
+endif
+
+# build shared libraries?
+ifneq ($(BUILD_SHARED_LIBS),0)
+  LIBRARY = shared
+  LIBFPZIP = libgecko.so
+else
+  LIBRARY = static
+  LIBFPZIP = libgecko.a
+endif
+
+# conditionals ----------------------------------------------------------------
+
+# compiler options ------------------------------------------------------------
+
+CFLAGS = $(CSTD) $(FLAGS) $(DEFS)
+CXXFLAGS = $(CXXSTD) $(FLAGS) $(DEFS)

@@ -1,0 +1,8 @@
+add_executable(geckocmd gecko.cpp)
+if(NOT MSVC)
+  set_property(TARGET geckocmd PROPERTY OUTPUT_NAME gecko)
+endif()
+target_link_libraries(geckocmd gecko)
+if(HAVE_LIBM_MATH)
+  target_link_libraries(geckocmd m)
+endif()
