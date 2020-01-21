@@ -139,7 +139,7 @@ grid_test(
 )
 {
   // known minimal edge products
-  long minproduct[] = { 0l, 1l, 3l, 225l, 688905l, 145904338125l, 984582541613671875l };
+  double minproduct[] = { 0., 1., 3., 225., 688905., 145904338125., 984582541613671875. };
 
   if (size > sizeof(minproduct) / sizeof(minproduct[0]))
     return std::string("grid size exceeds maximum size");
@@ -147,7 +147,7 @@ grid_test(
   uint nodes = size * size;           // grid node count
   uint edges = 2 * size * (size - 1); // grid edge count
 
-  Float mincost = edges ? std::exp(std::log(double(minproduct[size])) / edges) : Float(0);
+  Float mincost = edges ? Float(std::exp(std::log(minproduct[size]) / edges)) : Float(0);
 
   // construct graph
   Graph graph;
@@ -185,8 +185,8 @@ grid_test(
 }
 
 // report the result of a test and return 1 if it failed
-static size_t
-report(std::string test, std::string error, size_t columns = 20)
+static int
+report(std::string test, std::string error, int columns = 20)
 {
   std::cerr << std::setw(columns) << std::left << test << " ";
   if (error.empty()) {

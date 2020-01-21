@@ -62,7 +62,7 @@ DynamicHeap<T, P, C, M>::insert(T data, P priority)
   if (index.find(data) != index.end())
     update(data, priority);
   else {
-    unsigned int i = heap.size();
+    unsigned int i = (unsigned int)heap.size();
     heap.push_back(HeapEntry(priority, data));
     ascend(i);
   }
@@ -109,7 +109,7 @@ DynamicHeap<T, P, C, M>::pop()
 {
   if (!heap.empty()) {
     T data = heap[0].data;
-    swap(0, heap.size() - 1);
+    swap(0, (unsigned int)heap.size() - 1);
     index.erase(data);
     heap.pop_back();
     if (!heap.empty())

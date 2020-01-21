@@ -55,8 +55,8 @@ public:
   Graph(uint nodes = 0) : level(0), last_node(Node::null) { init(nodes); }
 
   // number of nodes and edges
-  uint nodes() const { return node.size() - 1; }
-  uint edges() const { return (adj.size() - 1) / 2; }
+  uint nodes() const { return uint(node.size() - 1); }
+  uint edges() const { return uint((adj.size() - 1) / 2); }
 
   // insert node and return its index
   Node::Index insert_node(Float length = 1);

@@ -133,7 +133,7 @@ public:
   }
   Float bond(Float w, Float l, uint k) const
   {
-    return w * std::pow(l, -Float(3) * k / (k + 1));
+    return w * std::pow(l, -Float(3) * Float(k) / Float(k + 1));
   }
   Float optimum(const std::vector<WeightedValue>& v) const
   {
@@ -146,7 +146,7 @@ class FunctionalGeometric : public FunctionalQuasiconvex {
 public:
   WeightedSum sum(const WeightedValue& term) const
   {
-    return WeightedSum(term.weight * log(term.value), term.weight);
+    return WeightedSum(term.weight * std::log(term.value), term.weight);
   }
   Float mean(const WeightedSum& sum) const
   {
@@ -154,7 +154,7 @@ public:
   }
   Float bond(Float w, Float l, uint k) const
   {
-    return w * std::pow(l, -Float(2) * k / (k + 1));
+    return w * std::pow(l, -Float(2) * Float(k) / Float(k + 1));
   }
   Float optimum(const std::vector<WeightedValue>& v) const
   {
@@ -167,7 +167,7 @@ class FunctionalSMR : public FunctionalQuasiconvex {
 public:
   WeightedSum sum(const WeightedValue& term) const
   {
-    return WeightedSum(term.weight * sqrt(term.value), term.weight);
+    return WeightedSum(term.weight * std::sqrt(term.value), term.weight);
   }
   Float mean(const WeightedSum& sum) const
   {
@@ -175,7 +175,7 @@ public:
   }
   Float bond(Float w, Float l, uint k) const
   {
-    return w * std::pow(l, -Float(1.5) * k / (k + 1));
+    return w * std::pow(l, -Float(1.5) * Float(k) / Float(k + 1));
   }
   Float optimum(const std::vector<WeightedValue>& v) const
   {
@@ -196,7 +196,7 @@ public:
   }
   Float bond(Float w, Float l, uint k) const
   {
-    return w * std::pow(l, -Float(1) * k / (k + 1));
+    return w * std::pow(l, -Float(1) * Float(k) / Float(k + 1));
   }
   Float optimum(const std::vector<WeightedValue>& v) const
   {

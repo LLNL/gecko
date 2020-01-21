@@ -27,7 +27,7 @@ Graph::init(uint nodes)
 Node::Index
 Graph::insert_node(Float length)
 {
-  Node::Index p = node.size();
+  Node::Index p = Node::Index(node.size());
   perm.push_back(p);
   node.push_back(Node(-1, length));
   return p;
@@ -51,12 +51,12 @@ Graph::insert_arc(Node::Index i, Node::Index j, Float w, Float b)
     return Arc::null;
   last_node = i;
   for (Node::Index k = i - 1; node[k].arc == Arc::null; k--)
-    node[k].arc = adj.size();
+    node[k].arc = Arc::Index(adj.size());
   adj.push_back(j);
   weight.push_back(w);
   bond.push_back(b);
-  node[i].arc = adj.size();
-  return adj.size() - 1;
+  node[i].arc = Arc::Index(adj.size());
+  return Arc::Index(adj.size() - 1);
 }
 
 // Remove arc a.
@@ -408,7 +408,7 @@ void
 Graph::optimize(uint n)
 {
   if (n > perm.size())
-    n = perm.size();
+    n = uint(perm.size());
   ostringstream count;
   count << setw(2) << n;
   progress->beginphase(this, string("perm") + count.str());
@@ -423,7 +423,7 @@ Graph::optimize(uint n)
 void
 Graph::place(bool sort)
 {
-  place(sort, 0, perm.size());
+  place(sort, 0, uint(perm.size()));
 }
 
 // Place nodes {k, ..., k + n - 1} according to their positions.
@@ -482,7 +482,7 @@ Graph::shuffle(uint seed)
   random(seed);
   for (uint k = 0; k < perm.size(); k++) {
     uint r = random() >> 8;
-    uint l = k + r % (perm.size() - k);
+    uint l = k + r % (uint(perm.size()) - k);
     std::swap(perm[k], perm[l]);
   }
   place();
