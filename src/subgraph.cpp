@@ -1,3 +1,4 @@
+#include <cstddef>
 #include <stdexcept>
 #include "subgraph.h"
 
@@ -50,8 +51,8 @@ Subgraph::swap(uint k)
   Subnode::Index j = perm[l];
   perm[k] = j;
   perm[l] = i;
-  node[i] -= ptrdiff_t(1u << j);
-  node[j] += ptrdiff_t(1u << i);
+  node[i] -= ptrdiff_t(1) << j;
+  node[j] += ptrdiff_t(1) << i;
 }
 
 // Swap the two nodes in positions k and l, k <= l.
@@ -66,8 +67,8 @@ Subgraph::swap(uint k, uint l)
   uint m = 0;
   while (++k < l) {
     Subnode::Index h = perm[k];
-    node[h] += ptrdiff_t(1u << i);
-    node[h] -= ptrdiff_t(1u << j);
+    node[h] += ptrdiff_t(1) << i;
+    node[h] -= ptrdiff_t(1) << j;
     m += 1u << h;
   }
   node[i] -= (1u << j) + m;
