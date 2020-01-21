@@ -261,7 +261,6 @@ main(int argc, char *argv[])
   }
 
   // set up signal handler to catch interrupts
-  signal(SIGHUP, handler);
   signal(SIGINT, handler);
   signal(SIGTERM, handler);
 
