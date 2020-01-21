@@ -106,7 +106,7 @@ Drawing::draw(const Graph* g)
 
   // draw nodes
   for (Node::Index i = 1; i <= g->nodes(); i++)
-    device->node(g->node[i].pos, Float(0.5) * g->node[i].hlen, g->persistent(i) ? 0.25 : 0.75);
+    device->node(g->node[i].pos, Float(0.5) * g->node[i].hlen, g->persistent(i) ? Float(0.25) : Float(0.75));
 
   device->end();
 }
