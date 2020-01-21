@@ -79,9 +79,10 @@ Regression Testing
 
 Basic regression tests are provided to ensure that the library is
 functioning properly.  To run the regression tests, make sure
-`BUILD_TESTING` is enabled (the default).  Using CMake, run `ctest -V`
-to execute the tests after they have been built.  If building with
-GNU Make, type `make test` instead from the top-level directory.
+`BUILD_TESTING` is enabled (the default).  Using CMake, run
+`ctest -V -C Release` to execute the tests after they have been built.
+If building with GNU Make, type `make test` instead from the top-level
+directory.
 
 
 Installation
