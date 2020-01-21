@@ -1,11 +1,22 @@
+#include <cstdio>
 #include <cstdlib>
 #include <iomanip>
 #include <iostream>
+#include <sstream>
 #include <string>
 #include "gecko.h"
 #include "gecko/graph.h"
 
 using namespace Gecko;
+
+template <typename T>
+static std::string
+stringize(T val)
+{
+  std::ostringstream s;
+  s << val;
+  return s.str();
+}
 
 // print library version info
 static bool
@@ -66,7 +77,7 @@ path_test(
     Node::Index i = graph.permutation(rank + 0);
     Node::Index j = graph.permutation(rank + 1);
     if (!graph.arc_index(i, j))
-      return std::string("{") + std::to_string(i) + std::string(", ") + std::to_string(j) + std::string("} is not an edge");
+      return std::string("{") + stringize(i) + std::string(", ") + stringize(j) + std::string("} is not an edge");
   }
 
   return std::string();
@@ -111,7 +122,7 @@ hypercube_test(
     Node::Index i = graph.permutation(rank + 0);
     Node::Index j = graph.permutation(rank + 1);
     if (!graph.arc_index(i, j))
-      return std::string("{") + std::to_string(i) + std::string(", ") + std::to_string(j) + std::string("} is not an edge");
+      return std::string("{") + stringize(i) + std::string(", ") + stringize(j) + std::string("} is not an edge");
   }
 
   return std::string();
@@ -170,7 +181,7 @@ grid_test(
   if (cost <= Float(1 + epsilon) * mincost)
     return std::string();
   else
-    return std::to_string(cost) + " > " + std::to_string(mincost);
+    return stringize(cost) + " > " + stringize(mincost);
 }
 
 // report the result of a test and return 1 if it failed
@@ -224,14 +235,14 @@ int main(int argc, char* argv[])
   // order hypercubes
   for (uint dims = 1; dims <= maxdims; dims++) {
     std::string error = hypercube_test(dims);
-    failures += report(std::string("hypercube test #") + std::to_string(dims), error);
+    failures += report(std::string("hypercube test #") + stringize(dims), error);
     tests++;
   }
 
   // order grids
   for (uint size = 1; size <= maxsize; size++) {
     std::string error = grid_test(size);
-    failures += report(std::string("grid test #") + std::to_string(size), error);
+    failures += report(std::string("grid test #") + stringize(size), error);
     tests++;
   }
 
