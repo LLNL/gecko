@@ -103,7 +103,7 @@ cmake_dependent_option(GECKO_ENABLE_PIC
   "SHARED_LIBS_SUPPORTED" OFF)
 set(CMAKE_POSITION_INDEPENDENT_CODE ${GECKO_ENABLE_PIC})
 
-# Compile-time options
+# Compile-time options and default settings
 
 set(GECKO_PART_FRAC 4 CACHE STRING "Ratio of max to min weight for aggregation")
 set_property(CACHE GECKO_PART_FRAC PROPERTY STRINGS "4")
@@ -129,9 +129,18 @@ list(APPEND gecko_private_defs GECKO_PART_FRAC=${GECKO_PART_FRAC})
 list(APPEND gecko_private_defs GECKO_CR_SWEEPS=${GECKO_CR_SWEEPS})
 list(APPEND gecko_private_defs GECKO_GS_SWEEPS=${GECKO_GS_SWEEPS})
 list(APPEND gecko_private_defs GECKO_WINDOW_MAX=${GECKO_WINDOW_MAX})
-list(APPEND gecko_private_defs GECKO_WIDTH_ADJLIST=${GECKO_WITH_ADJLIST})
-list(APPEND gecko_private_defs GECKO_WIDTH_NONRECURSIVE=${GECKO_WITH_NONRECURSIVE})
-list(APPEND gecko_private_defs GECKO_WIDTH_DOUBLE_PRECISION=${GECKO_WITH_DOUBLE_PRECISION})
+
+if(GECKO_WITH_ADJLIST)
+  list(APPEND gecko_private_defs GECKO_WITH_ADJLIST)
+endif()
+
+if(GECKO_WITH_NONRECURSIVE)
+  list(APPEND gecko_private_defs GECKO_WITH_NONRECURSIVE)
+endif()
+
+if(GECKO_WITH_DOUBLE_PRECISION)
+  list(APPEND gecko_private_defs GECKO_WITH_DOUBLE_PRECISION)
+endif()
 
 # Link libm only if necessary
 include(CheckCSourceCompiles)

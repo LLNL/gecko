@@ -55,6 +55,18 @@ endif
 
 # conditionals ----------------------------------------------------------------
 
+ifdef GECKO_WITH_ADJLIST
+  DEFS += -DGECKO_WITH_ADJLIST=$(GECKO_WITH_ADJLIST)
+endif
+
+ifdef GECKO_WITH_NONRECURSIVE
+  DEFS += -DGECKO_WITH_NONRECURSIVE=$(GECKO_WITH_NONRECURSIVE)
+endif
+
+ifdef GECKO_WITH_DOUBLE_PRECISION
+  DEFS += -DGECKO_WITH_DOUBLE_PRECISION=$(GECKO_WITH_DOUBLE_PRECISION)
+endif
+
 # compiler options ------------------------------------------------------------
 
 CFLAGS = $(CSTD) $(FLAGS) $(DEFS)
