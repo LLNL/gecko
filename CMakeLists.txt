@@ -139,7 +139,7 @@ if(GECKO_WITH_NONRECURSIVE)
 endif()
 
 if(GECKO_WITH_DOUBLE_PRECISION)
-  list(APPEND gecko_private_defs GECKO_WITH_DOUBLE_PRECISION)
+  list(APPEND gecko_public_defs GECKO_WITH_DOUBLE_PRECISION)
 endif()
 
 # Link libm only if necessary
