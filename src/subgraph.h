@@ -29,7 +29,7 @@ private:
   Subnode::Index perm[GECKO_WINDOW_MAX]; // current permutation
   const Subnode* node[GECKO_WINDOW_MAX]; // pointers to precomputed nodes
   Subnode* cache;                        // precomputed node positions and costs
-#if GECKO_SUBGRAPH_ADJLIST
+#if GECKO_WITH_ADJLIST
   Subnode::Index adj[GECKO_WINDOW_MAX][GECKO_WINDOW_MAX]; // internal adjacency list
 #else
   uint adj[GECKO_WINDOW_MAX];            // internal adjacency matrix
