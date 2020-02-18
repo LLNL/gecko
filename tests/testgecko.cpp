@@ -132,9 +132,9 @@ hypercube_test(
 static std::string
 grid_test(
   uint size,           // number of nodes along each dimension
-  uint iterations = 5, // number of V cycles
+  uint iterations = 9, // number of V cycles
   uint window = 5,     // initial window size
-  uint period = 1,     // iterations between window increment
+  uint period = 2,     // iterations between window increment
   uint seed = 1        // random number seed
 )
 {
@@ -177,7 +177,7 @@ grid_test(
   Float cost = graph.cost();
   delete functional;
 
-  Float epsilon = Float(1e-6);
+  Float epsilon = Float(1e-2);
   if (cost <= Float(1 + epsilon) * mincost)
     return std::string();
   else
