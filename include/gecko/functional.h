@@ -269,6 +269,7 @@ public:
 class FunctionalMaximum : public Functional {
 public:
   using Functional::sum;
+  using Functional::accumulate;
   WeightedSum sum(const WeightedValue& term) const
   {
     return WeightedSum(term.value, term.weight);
