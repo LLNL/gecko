@@ -118,6 +118,7 @@ private:
 // harmonic mean (p = -1)
 class FunctionalHarmonic : public FunctionalQuasiconvex {
 public:
+  using Functional::sum;
   bool less(const WeightedSum& s, const WeightedSum& t) const
   {
     // This is only a loose bound when s.weight < t.weight.
@@ -144,6 +145,7 @@ public:
 // geometric mean (p = 0)
 class FunctionalGeometric : public FunctionalQuasiconvex {
 public:
+  using Functional::sum;
   WeightedSum sum(const WeightedValue& term) const
   {
     return WeightedSum(term.weight * std::log(term.value), term.weight);
@@ -165,6 +167,7 @@ public:
 // square mean root (p = 1/2)
 class FunctionalSMR : public FunctionalQuasiconvex {
 public:
+  using Functional::sum;
   WeightedSum sum(const WeightedValue& term) const
   {
     return WeightedSum(term.weight * std::sqrt(term.value), term.weight);
@@ -186,6 +189,7 @@ public:
 // arithmetic mean (p = 1)
 class FunctionalArithmetic : public Functional {
 public:
+  using Functional::sum;
   WeightedSum sum(const WeightedValue& term) const
   {
     return WeightedSum(term.weight * term.value, term.weight);
@@ -236,6 +240,7 @@ public:
 // root mean square (p = 2)
 class FunctionalRMS : public Functional {
 public:
+  using Functional::sum;
   WeightedSum sum(const WeightedValue& term) const
   {
     return WeightedSum(term.weight * term.value * term.value, term.weight);
@@ -263,6 +268,7 @@ public:
 // maximum (p = infinity)
 class FunctionalMaximum : public Functional {
 public:
+  using Functional::sum;
   WeightedSum sum(const WeightedValue& term) const
   {
     return WeightedSum(term.value, term.weight);
